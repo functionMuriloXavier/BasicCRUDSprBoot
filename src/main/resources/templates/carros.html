@@ -1,0 +1,39 @@
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+    </head>
+    <body>
+        <a href="#" th:href="@{/}">Home</a> | 
+        <a href="#" th:href="@{/carros}">Carros</a> | 
+        <a href="#" th:href="@{/carros/new}">Adicionar um carro</a>
+        <hr/>
+        <div th:if="${#lists.isEmpty(carros)}">
+            <p>Você não possui nenhum carro adicionado! Cadastre um!</p>
+            <a href="#" th:href="@{/carros/new}">Adicionar um carro</a>
+        </div>    
+        <div th:if="${not #lists.isEmpty(carros)}">
+            <h2>Carros List</h2>
+            <table border="1">
+                <tr>
+                    <td>ID</td>
+                    <td>Modelo</td>
+                    <td>Marca</td>
+                    <td>Cor</td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                </tr>
+                <tr th:each="carro : ${carros}">
+                    <td th:text="${carro.id}">id</td>
+                    <td th:text="${carro.modelo}">modelo</td>
+                    <td th:text="${carro.marca}">marca</td>
+                    <td th:text="${carro.cor}">cor</td>
+                    <td><a th:href="${'/carros/' + carro.id}">View</a></td>
+                    <td><a th:href="${'/carros/edit/' + carro.id}">Edit</a></td>
+                    <td><a th:href="${'/carros/delete/' + carro.id}">Delete</a></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

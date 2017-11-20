@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+    </head>
+    <body>
+        <a href="#" th:href="@{/}">Home</a> | 
+        <a href="#" th:href="@{/carros}">Carros</a> | 
+        <a href="#" th:href="@{/carros/new}">Adicionar um carro</a>
+        <hr/>
+        <h2>Inserindo/Editando carro:</h2>
+        <form th:object="${carros}" th:action="@{/carros}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <label>Modelo:</label>
+            <input type="text" th:field="*{modelo}"/>
+            <label>Marca:</label>
+            <input type="text" th:field="*{marca}"/>
+            <label>Cor:</label>
+            <input type="text" th:field="*{cor}"/>
+            <input type="submit" value="Enviar"/>
+        </form>
+    </body>
+</html>
